@@ -678,7 +678,7 @@ int main()
                         }
                         else if (ip_valid(input) == 0){//if is domain name, then print directly
                             if(get_official_ip(input, &listHP)){
-                                printf("%s", input);
+                                printf("%s\n", input);
                                 deleteAll(&listHP);
                             }
                         }
@@ -710,7 +710,7 @@ int main()
                         }
                         else if (ip_valid(input) == 1){//if is ip address, then print directly
                             if(get_official_name(input, &listHP)){
-                                printf("%s", input);
+                                printf("%s\n", input);
                                 deleteAll(&listHP);
                             }
                         }
