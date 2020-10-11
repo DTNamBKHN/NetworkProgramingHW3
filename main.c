@@ -670,14 +670,17 @@ int main()
                     if (searchAccount(signedInList, user_name)){
                         node *account_pointer = extractAccount(list, user_name);
                         char *input = account_pointer->element.homepage;
-                        if (ip_valid(input) == 1){
+                        if (ip_valid(input) == 1){//if IP
                             if(get_official_name(input, &listHP)){
                                 printSingleListHostname(listHP);
                                 deleteAll(&listHP);
                             }
                         }
                         else if (ip_valid(input) == 0){//if is domain name, then print directly
-                            printf("\n%s", input);
+                            if(get_official_ip(input, &listHP)){
+                                printf("%s", input);
+                                deleteAll(&listHP);
+                            }
                         }
                     }
                     else{
@@ -705,8 +708,11 @@ int main()
                                 deleteAll(&listHP);
                             }
                         }
-                        else if (ip_valid(input) == 0){//if is ip address, then print directly
-                            printf("\n%s", input);
+                        else if (ip_valid(input) == 1){//if is ip address, then print directly
+                            if(get_official_name(input, &listHP)){
+                                printf("%s", input);
+                                deleteAll(&listHP);
+                            }
                         }
                     }
                     else{
